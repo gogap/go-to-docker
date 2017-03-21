@@ -1,0 +1,19 @@
+FROM {{.AppImage}}
+
+RUN mkdir -p /go/app
+
+ADD . /go/app
+
+{{if .AppImageUser}} 
+RUN addgroup {{.AppImageUser}} && \
+adduser -S -G {{.AppImageUser}} {{.AppImageUser}}
+RUN chown -R {{.AppImageUser}}:{{.AppImageUser}} /go/app
+{{end}}
+
+WORKDIR /go/app
+
+{{if .AppImageUser}} 
+USER {{.AppImageUser}}
+{{end}}
+
+ENTRYPOINT ["/go/app/{{.AppName}}"]

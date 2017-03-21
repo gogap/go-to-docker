@@ -1,0 +1,12 @@
+{
+	"branchs":{
+		"master":{
+			"gopath":"",
+			"server":"",
+			"username":"",
+			"password":"",
+			"organization":"",
+			"tags":[]
+		}
+	}
+}
